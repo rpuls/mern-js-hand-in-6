@@ -1,0 +1,16 @@
+<div ng-controller="JokeController">
+<h2>All jokes.... have a laugh!</h2>
+<input type="search" class="form-control" ng-model="jokeFilter" placeholder="Search joke"/>
+    <table class="table table-striped">
+        <tr>
+            <th class="col-xs-2">Author</th>
+            <th class="col-xs-8">Joke</th>
+            <th class="col-xs-2">Category</th>
+        </tr>
+        <tr ng-repeat="joke in jokes| filter: jokeFilter">
+            <td>{[{joke.reference.author}]}</td>
+            <td>{[{joke.joke}]}</td>
+            <td><span ng-repeat="category in joke.category">{[{category + ", "}]}</span></td>
+        </tr>
+    </table>
+</div>
