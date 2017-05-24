@@ -1,3 +1,5 @@
+# exersice NOT finished yet!
+
 # mern-js-hand-in-6
 Mongodb, Express, React, Node.js - secured webapp seed
 
