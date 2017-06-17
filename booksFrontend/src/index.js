@@ -6,8 +6,8 @@ import Login from './views/Login'
 
 const App = () => (
   <div>
-    <nav>
-      <ul className="header">
+    <nav className="navbar navbar-default">
+      <ul className="nav navbar-nav">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/books">Books</Link></li>
         <li><Link to="/company">Company</Link></li>
@@ -22,7 +22,9 @@ const App = () => (
 
 const Home = () => (
   <div>
-    <h1>Welcome to the Tornadoes Website!</h1>
+    <h1>React seed made by Rasmus Puls!</h1>
+    <p>Seed including; mongoose, express, react, node.js, login syetm, JWT session, password hashing & salting</p>
+    <p>Note that the backed for this seed is a seperate app, and needs to run for this seed to work. </p>
   </div>
 )
 

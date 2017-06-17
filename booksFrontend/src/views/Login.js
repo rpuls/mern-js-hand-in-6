@@ -20,8 +20,7 @@ class Login extends React.Component {
   handleSubmit(event) {
     const xhr = new XMLHttpRequest()
     xhr.onreadystatechange = function(e){
-      if(xhr.readyState == 4){
-        var res = xhr.response 
+      if(xhr.readyState === 4){
         console.log(`${xhr.state} ${xhr.status}`) 
       }
   }

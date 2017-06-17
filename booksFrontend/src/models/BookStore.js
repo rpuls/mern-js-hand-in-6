@@ -13,12 +13,10 @@ class BookStore {
   fetchBooks = () => {
     fetch(booksURL)
       .then((response) => {
-        //console.log(response.body)
         return response.json()
       })
       .then((response) => {
         this._books = response
-        //console.log("Got books from server")
         if (this._observer) {
           this._observer.dataReady()
         }
