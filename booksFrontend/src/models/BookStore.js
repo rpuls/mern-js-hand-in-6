@@ -1,13 +1,14 @@
+import { observable, action, useStrict, extendObservable } from 'mobx'
 const backendURL = "http://localhost:7777/"
 const booksURL = `${backendURL}books`
 
 //DataStore for this Demo
 class BookStore {
 
+  @observable books = []; //this "@ syntax"" is experimental for the moment and might not work in the future.
+
   constructor() {
-    this._books = []
-    //this.fetchBooks()
-    this._observer = null
+    this.fetchBooks()
   }
 
   fetchBooks = () => {
@@ -16,30 +17,22 @@ class BookStore {
         return response.json()
       })
       .then((response) => {
-        this._books = response
+        this.books = response
         if (this._observer) {
           this._observer.dataReady()
         }
       })
   }
 
-
-  subscribe(observer) {
-    this._observer = observer
-  }
-
-  get books() {
-    this.fetchBooks()
-    return this._books
-  }
-
   getBook(id) {
-    return this._books.filter((book) => {
+    return this.books.filter((book) => {
       return book.id === Number(id)
     })[0]
   }
 
-
+  addDummyBooks = (book) => {
+    this.books.push(book)
+  }
 
   addBook = (book) => {
     var self = this

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import Books from './views/Books'
 import Login from './views/Login'
+import BookStore from './models/BookStore'
 
 const App = () => (
   <div>
@@ -34,13 +35,15 @@ const Company = () => (
   </div>
 )
 
-
+    /*
+    <Route path='/books' component={Books} books={["1 bog"]} render=/> //BookStore.books
+    */
 
 const Content = () => (
   <Switch>
     <Route exact path='/' component={Home} />
     {/* both /roster and /roster/:number begin with /roster */}
-    <Route path='/books' component={Books} />
+    <Route path='/books' render={(props) => (<Books {...props} books={BookStore.books}/>)} />
     <Route path='/company' component={Company} />
     <Route path='/login' component={Login} />
   </Switch>

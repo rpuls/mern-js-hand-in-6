@@ -16,7 +16,8 @@
     "jsonwebtoken": "^7.4.1",
     "mongodb": "^2.2.11",
     "mongoose": "^4.6.7",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "helmet": "^2.4.0"
   },
   "devDependencies": {
     "node-fetch": "^1.6.3"

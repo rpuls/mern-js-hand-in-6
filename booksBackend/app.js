@@ -1,15 +1,28 @@
-let express = require("express")
-let app = express()
-let bodyParser = require("body-parser")
-let logger = require('morgan')
-let api = require("./api/api")
-let path = require('path')
+const express = require("express")
+const app = express()
+const bodyParser = require("body-parser")
+const logger = require('morgan')
+const api = require("./api/api")
+const path = require('path')
+const helmet = require('helmet')
 const secret = require('./models/secrets')
 const expressJWT = require('express-jwt')
 app.set("json spaces", 2)
 app.use(logger("dev"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"]
+  }
+}))
+app.use(helmet.frameguard({ action: 'sameorigin' }))
+/* Not yet implemented in frontend.
+app.use(express.csrf())
+app.use((req,res,next)=>{
+  res.locals.csrftoken = req.csrfToken()
+  next()
+})*/
 app.use(expressJWT({secret: secret}).unless({path : ['/login','/books', '/user']}))
 
 app.use("/", function (req, res, next) {
